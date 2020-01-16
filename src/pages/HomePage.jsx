@@ -6,20 +6,26 @@ const HomePage = () => {
     recruiterName: '',
     recruiterEmail: '',
   })
+  const [success, setSuccess] = useState(false)
   const postNewRecruiter = async e => {
     e.preventDefault()
     const response = await axios.post(
       'https://nurse-2-nurse-api.herokuapp.com/api/NurseInformation/NewRecruiter',
       newRecruiter
     )
-    console.log(response.data)
+    if (response.status === 200) {
+      alert(
+        `Success: ${newRecruiter.recruiterEmail} has been added to the options.`
+      )
+      window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/'
+    }
   }
-  const deleteRecruiter = async email => {
-    email = newRecruiter.recruiterEmail
+  const deleteRecruiter = async () => {
     const response = await axios.delete(
-      `https://nurse-2-nurse-api.herokuapp.com/api/NurseInformation/delete/Recruiter/${email}`
+      `https://nurse-2-nurse-api.herokuapp.com/api/NurseInformation/delete/Recruiter/${newRecruiter.recruiterEmail}`
     )
-    console.log(response.data)
+    alert(response.data)
+    window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/'
   }
   const handleChange = e => {
     e.persist()
