@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Modal } from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 const HomePage = () => {
   const [newRecruiter, setNewRecruiter] = useState({
     recruiterName: '',
     recruiterEmail: '',
   })
   const [success, setSuccess] = useState(false)
+  const [recruiters, setRecruiters] = useState([])
+
+  const viewRecruiters = async () => {
+    const response = await axios.get(
+      `https://nurse-2-nurse-api.herokuapp.com/api/NurseInformation/AllRecruiters`
+    )
+    setRecruiters(response.data)
+  }
+  useEffect(() => {
+    if (handleShow) {
+      viewRecruiters()
+    }
+  }, [handleShow])
   const postNewRecruiter = async e => {
     e.preventDefault()
     const response = await axios.post(
@@ -27,6 +41,7 @@ const HomePage = () => {
     alert(response.data)
     window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/'
   }
+
   const handleChange = e => {
     e.persist()
     setNewRecruiter(prev => {
@@ -36,8 +51,38 @@ const HomePage = () => {
       }
     })
   }
+  const [show, setShow] = useState(false)
+  const [viewHistorical, setViewHistorical] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   return (
     <div className="flex">
+      {viewHistorical && <Redirect to="/historical" />}
+      <Button onClick={() => setViewHistorical(true)}>
+        View Historical Records
+      </Button>
+      <Button onClick={handleShow}>View Recruiters</Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Current Recruiters</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {recruiters.map(recruiter => {
+            return (
+              <span>
+                <p>
+                  {recruiter.recruiterName}: {recruiter.recruiterEmail}
+                </p>
+              </span>
+            )
+          })}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Form onSubmit={postNewRecruiter}>
         {' '}
         <h1>New Recruiter</h1>
