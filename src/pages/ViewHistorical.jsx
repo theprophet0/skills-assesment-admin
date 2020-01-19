@@ -9,7 +9,7 @@ const ViewHistorical = () => {
   useEffect(() => {
     const getHistoricalRecords = async () => {
       const response = await axios.get(
-        'https://nurse-2-nurse-api.herokuapp.com/AllRecruiters'
+        'https://nurse-2-nurse-api.herokuapp.com/api​/NurseInformation​/All'
       )
       console.log(response)
       setHistoricalRecords(response.data)
