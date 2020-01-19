@@ -24,7 +24,7 @@ const HomePage = () => {
   const postNewRecruiter = async e => {
     e.preventDefault()
     const response = await axios.post(
-      'https://nurse-2-nurse-api.herokuapp.com/api/NurseInformation/NewRecruiter',
+      'https://nurse-2-nurse-api.herokuapp.com/NewRecruiter',
       newRecruiter
     )
     if (response.status === 200) {
@@ -36,7 +36,7 @@ const HomePage = () => {
   }
   const deleteRecruiter = async () => {
     const response = await axios.delete(
-      `https://nurse-2-nurse-api.herokuapp.com/api/NurseInformation/delete/Recruiter/${newRecruiter.recruiterEmail}`
+      `https://nurse-2-nurse-api.herokuapp.com//api/RecruiterInformation/delete/${newRecruiter.recruiterEmail}`
     )
     alert(response.data)
     window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/'

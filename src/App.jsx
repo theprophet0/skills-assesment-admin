@@ -10,7 +10,6 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
         <Route exact path="/historical" component={ViewHistorical}></Route>
-
         <Route path="*" component={NotFound}></Route>
       </Switch>
     </Router>
