@@ -9,10 +9,16 @@ const HomePage = () => {
   })
   const [success, setSuccess] = useState(false)
   const [recruiters, setRecruiters] = useState([])
-
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'JWT fefege...',
+  }
   const viewRecruiters = async () => {
     const response = await axios.get(
-      `https://nurse-2-nurse-api.herokuapp.com/AllRecruiters`
+      `https://nurse-2-nurse-api.herokuapp.com/AllRecruiters`,
+      {
+        headers: headers,
+      }
     )
     setRecruiters(response.data)
   }
