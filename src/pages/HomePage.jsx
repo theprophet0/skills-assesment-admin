@@ -12,10 +12,7 @@ const HomePage = () => {
 
   const viewRecruiters = async () => {
     const response = await axios.get(
-      `https://nurse-2-nurse-api.herokuapp.com/AllRecruiters`,
-      {
-        headers: { 'Access-Control-Allow-Origin': '*' },
-      }
+      `https://nurse-2-nurse-api.herokuapp.com/AllRecruiters`
     )
     setRecruiters(response.data)
   }
