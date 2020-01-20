@@ -11,6 +11,13 @@ body {
   min-height: 100%;
 }
 
+.flexThis {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:10rem;
+}
+
 .flex {
   height: 100%;
   margin: 0;
