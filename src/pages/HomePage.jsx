@@ -42,16 +42,16 @@ const HomePage = () => {
       alert(
         `Success: ${newRecruiter.recruiterEmail} has been added to the options.`
       )
-      window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/'
+      window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
     }
   }
   const deleteRecruiter = async () => {
     const response = await axios.delete(
       `https://nurse-2-nurse-api.herokuapp.com/api/RecruiterInformation/delete/${newRecruiter.recruiterEmail}`,
-      { headers: { Authorization: 'Bearer' + token } }
+      { headers: { Authorization: 'Bearer ' + token } }
     )
     alert(response.data)
-    window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/'
+    window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
   }
 
   const handleChange = e => {
