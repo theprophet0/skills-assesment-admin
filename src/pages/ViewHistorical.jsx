@@ -6,22 +6,26 @@ import { Redirect } from 'react-router-dom'
 const ViewHistorical = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
+  const getHistoricalRecords = async () => {
+    const response = await axios.get(
+      'https://nurse-2-nurse-api.herokuapp.com/api​/NurseInformation​/All',
+      { headers: { Authorization: 'Bearer ' + token } }
+    )
+    console.log(response)
+    setHistoricalRecords(response.data)
+  }
   useEffect(() => {
     const successfulToken = localStorage.getItem('token')
     if (!successfulToken) {
-      const getHistoricalRecords = async () => {
-        const response = await axios.get(
-          'https://nurse-2-nurse-api.herokuapp.com/api​/NurseInformation​/All',
-          { headers: { Authorization: 'Bearer ' + token } }
-        )
-        console.log(response)
-        setHistoricalRecords(response.data)
-      }
       setIsAuthenticated(false)
-      getHistoricalRecords()
     }
     setToken(successfulToken)
   }, [])
+  useEffect(() => {
+    if (token !== '') {
+      getHistoricalRecords()
+    }
+  }, [token])
   const [historicalRecords, setHistoricalRecords] = useState([])
   const [redirect, setRedirect] = useState(false)
 
