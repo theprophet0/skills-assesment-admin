@@ -9,6 +9,14 @@ const ViewHistorical = () => {
   useEffect(() => {
     const successfulToken = localStorage.getItem('token')
     if (!successfulToken) {
+      const getHistoricalRecords = async () => {
+        const response = await axios.get(
+          'https://nurse-2-nurse-api.herokuapp.com/api​/NurseInformation​/All',
+          { headers: { Authorization: 'Bearer ' + token } }
+        )
+        console.log(response)
+        setHistoricalRecords(response.data)
+      }
       setIsAuthenticated(false)
       getHistoricalRecords()
     }
@@ -16,18 +24,10 @@ const ViewHistorical = () => {
   }, [])
   const [historicalRecords, setHistoricalRecords] = useState([])
   const [redirect, setRedirect] = useState(false)
-  const getHistoricalRecords = async () => {
-    const response = await axios.get(
-      'https://nurse-2-nurse-api.herokuapp.com/api​/NurseInformation​/All',
-      { headers: { Authorization: 'Bearer ' + token } }
-    )
-    console.log(response)
-    setHistoricalRecords(response.data)
-  }
 
   return (
     <>
-      {/* {redirect && <Redirect to="/home" />} */}
+      {redirect && <Redirect to="/home" />}
       {isAuthenticated ? (
         <>
           <div className="centerButton">
