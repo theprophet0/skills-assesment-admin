@@ -35,8 +35,8 @@ const HomePage = () => {
     e.preventDefault()
     const response = await axios.post(
       'https://nurse-2-nurse-api.herokuapp.com/NewRecruiter',
-      { headers: { Authorization: `Bearer ${token}` } },
-      { data: newRecruiter }
+      newRecruiter,
+      { headers: { Authorization: 'Bearer ' + token } }
     )
     if (response.status === 200) {
       alert(
