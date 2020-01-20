@@ -8,6 +8,9 @@ const ViewHistoricalComponent = props => {
       </p>
       <p>{props.record.nurseEmail}</p>
       <p>{props.record.recruiterEmail}</p>
+      <p>{props.record.skillsTestName}</p>
+      <p>{props.record.timeSubmitted}</p>
+
       <Button download="test" href={props.record.testDataPdf} variant="primary">
         Get PDF
       </Button>
