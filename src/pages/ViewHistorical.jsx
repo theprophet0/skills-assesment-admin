@@ -8,7 +8,7 @@ const ViewHistorical = () => {
   const [token, setToken] = useState('')
   const getHistoricalRecords = async () => {
     const response = await axios.get(
-      `https://nurse-2-nurse-api.herokuapp.com/api/NurseInformation/All`,
+      `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/All`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
     console.log(response)

@@ -21,7 +21,7 @@ const HomePage = () => {
 
   const viewRecruiters = async () => {
     const response = await axios.get(
-      `https://nurse-2-nurse-api.herokuapp.com/AllRecruiters`,
+      `https://new-nurse-2-nurse-api.herokuapp.com/AllRecruiters`,
       { headers: { Authorization: `Bearer ${token}` } }
     )
     setRecruiters(response.data)
@@ -34,7 +34,7 @@ const HomePage = () => {
   const postNewRecruiter = async e => {
     e.preventDefault()
     const response = await axios.post(
-      'https://nurse-2-nurse-api.herokuapp.com/NewRecruiter',
+      'https://new-nurse-2-nurse-api.herokuapp.com/NewRecruiter',
       newRecruiter,
       { headers: { Authorization: 'Bearer ' + token } }
     )
@@ -47,7 +47,7 @@ const HomePage = () => {
   }
   const deleteRecruiter = async () => {
     const response = await axios.delete(
-      `https://nurse-2-nurse-api.herokuapp.com/api/RecruiterInformation/delete/${newRecruiter.recruiterEmail}`,
+      `https://new-nurse-2-nurse-api.herokuapp.com/api/RecruiterInformation/delete/${newRecruiter.recruiterEmail}`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
     alert(response.data)

@@ -8,7 +8,7 @@ const AdminPage = () => {
   const [success, setSuccess] = useState(false)
   const loginUser = async e => {
     e.preventDefault()
-    const response = await axios.post('https://nurse-2-nurse-api.herokuapp.com/auth/login', {
+    const response = await axios.post('https://new-nurse-2-nurse-api.herokuapp.com/auth/login', {
       email: email,
       password: password,
     })
