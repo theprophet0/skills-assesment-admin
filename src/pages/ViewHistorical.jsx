@@ -44,7 +44,7 @@ const ViewHistorical = () => {
             </Button>
           </div>
           <div className="reFlex">
-            {historicalRecords.map(record => {
+            {historicalRecords.sort((a, b) => a.timeSubmitted - b.timeSubmitted).map(record => {
               return (
                 <div>
                   <ViewHistoricalComponent record={record} />
