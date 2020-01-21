@@ -44,13 +44,15 @@ const ViewHistorical = () => {
             </Button>
           </div>
           <div className="reFlex">
-            {historicalRecords.sort((a, b) => a.timeSubmitted - b.timeSubmitted).map(record => {
-              return (
-                <div>
-                  <ViewHistoricalComponent record={record} />
-                </div>
-              )
-            })}
+            {historicalRecords
+              .sort((a, b) => b.timeSubmitted - a.timeSubmitted)
+              .map(record => {
+                return (
+                  <div>
+                    <ViewHistoricalComponent record={record} />
+                  </div>
+                )
+              })}
           </div>
         </>
       ) : (
