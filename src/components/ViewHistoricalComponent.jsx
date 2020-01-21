@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
+import Moment from 'moment'
 const ViewHistoricalComponent = props => {
   return (
     <>
@@ -9,7 +10,11 @@ const ViewHistoricalComponent = props => {
       <p>{props.record.nurseEmail}</p>
       <p>{props.record.recruiterEmail}</p>
       <p>{props.record.skillsTestName}</p>
-      <p>{props.record.timeSubmitted}</p>
+      <p>
+        {props.record
+          .moment(employeeData.timeSubmitted)
+          .format('MMMM Do, YYYY')}
+      </p>
 
       <Button download="test" href={props.record.testDataPdf} variant="primary">
         Get PDF
