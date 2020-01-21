@@ -11,10 +11,10 @@ const ViewHistoricalComponent = props => {
       <p>{props.record.recruiterEmail}</p>
       <p>{props.record.skillsTestName}</p>
       <p>{Moment(props.record.timeSubmitted).format('MMMM Do, YYYY')}</p>
-      <hr></hr>
       <Button download="test" href={props.record.testDataPdf} variant="primary">
         Get PDF
       </Button>
+      <hr></hr>
     </>
   )
 }
