@@ -50,7 +50,13 @@ const ViewHistorical = () => {
           </div>
           <div className="reFlex">
             {historicalRecords
-              .sort((a, b) => b.timeSubmitted - a.timeSubmitted)
+              .sort((a, b) =>
+                a.timeSubmitted < b.timeSubmitted
+                  ? -1
+                  : a.timeSubmitted > b.timeSubmitted
+                  ? 1
+                  : 0
+              )
               .map(record => {
                 return (
                   <div>
