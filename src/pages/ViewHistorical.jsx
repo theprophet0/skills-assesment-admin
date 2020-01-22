@@ -16,7 +16,8 @@ const ViewHistorical = () => {
   }
   const DeleteNurseRecord = async id => {
     const response = await axios.delete(
-      `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`
+      `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`,
+      { headers: { Authorization: 'Bearer ' + token } }
     )
     if (response.status === 200) {
       alert(`Success!`)
