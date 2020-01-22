@@ -14,6 +14,9 @@ const ViewHistorical = () => {
     console.log(response)
     setHistoricalRecords(response.data)
   }
+  const DeleteNurseRecord = async (id) => {
+    const response = await axios.delete(`https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`)
+  }
   useEffect(() => {
     const successfulToken = localStorage.getItem('token')
     if (!successfulToken) {
