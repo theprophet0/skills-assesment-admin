@@ -18,6 +18,10 @@ const ViewHistorical = () => {
     const response = await axios.delete(
       `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`
     )
+    if (response.status === 200) {
+      alert(`Success!`)
+      window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
+    }
   }
   useEffect(() => {
     const successfulToken = localStorage.getItem('token')
