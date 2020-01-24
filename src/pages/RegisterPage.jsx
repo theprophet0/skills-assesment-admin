@@ -66,7 +66,7 @@ const RegisterPage = () => {
               <Form.Group controlId="formBasicName">
                 <Form.Label>Secret Hash</Form.Label>
                 <Form.Control
-                  name="fullName"
+                  name="secretHashed"
                   onChange={onChange}
                   type="password"
                   placeholder="Enter Secret Hash"
