@@ -27,7 +27,7 @@ const ViewHistorical = () => {
 
   const Logout = () => {
     localStorage.removeItem('token')
-    setToken('')
+    setLogoutRedirect(true)
   }
 
   useEffect(() => {
@@ -40,8 +40,6 @@ const ViewHistorical = () => {
   useEffect(() => {
     if (token !== '') {
       getHistoricalRecords()
-    } else if (token === '') {
-      setLogoutRedirect(true)
     }
   }, [token])
   const [historicalRecords, setHistoricalRecords] = useState([])
