@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Form, Button, Modal } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
+import JwtDecode from 'jwt-decode'
 const HomePage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
@@ -11,6 +12,9 @@ const HomePage = () => {
       setIsAuthenticated(false)
     }
     setToken(successfulToken)
+    console.log(JwtDecode('token'))
+    console.log(JwtDecode('token', email))
+
   }, [])
   const [newRecruiter, setNewRecruiter] = useState({
     recruiterName: '',
@@ -18,7 +22,10 @@ const HomePage = () => {
   })
   const [success, setSuccess] = useState(false)
   const [recruiters, setRecruiters] = useState([])
-
+  const [updatedCredentials, setUpdatedCredentials] = useState({
+    email: '',
+    password: '',
+  })
   const viewRecruiters = async () => {
     const response = await axios.get(
       `https://new-nurse-2-nurse-api.herokuapp.com/AllRecruiters`,
@@ -48,6 +55,14 @@ const HomePage = () => {
   const deleteRecruiter = async () => {
     const response = await axios.delete(
       `https://new-nurse-2-nurse-api.herokuapp.com/api/RecruiterInformation/delete/${newRecruiter.recruiterEmail}`,
+      { headers: { Authorization: 'Bearer ' + token } }
+    )
+    alert(response.data)
+    window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
+  }
+  const updatePassword = async () => {
+    const response = await axios.put(
+      `https://new-nurse-2-nurse-api.herokuapp.com/auth/update/password`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
     alert(response.data)
