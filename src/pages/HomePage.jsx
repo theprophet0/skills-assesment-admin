@@ -70,6 +70,8 @@ const HomePage = () => {
   }
   const [show, setShow] = useState(false)
   const [viewHistorical, setViewHistorical] = useState(false)
+  const [logoutRedirect, setLogoutRedirect] = useState(false)
+
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   return (
