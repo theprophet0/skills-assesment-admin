@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Form, Button, Modal } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
+import { jwtDecode, jwtVerify, resignJwt } from 'jwt-js-decode'
 const HomePage = () => {
-  var jwtDecode = require('jwt-decode')
-
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
   useEffect(() => {
@@ -13,7 +12,7 @@ const HomePage = () => {
       setIsAuthenticated(false)
     }
     setToken(successfulToken)
-    jwt_decode(token)
+    console.log(jwtDecode('token'))
   }, [])
   const [newRecruiter, setNewRecruiter] = useState({
     recruiterName: '',
