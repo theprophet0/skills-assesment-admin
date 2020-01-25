@@ -40,7 +40,7 @@ const ViewHistorical = () => {
   useEffect(() => {
     if (token !== '') {
       getHistoricalRecords()
-    } else {
+    } else if (token === '') {
       setLogoutRedirect(true)
     }
   }, [token])
@@ -55,11 +55,7 @@ const ViewHistorical = () => {
           {logoutRedirect ? (
             <Redirect to="/" />
           ) : (
-            <Button
-              variant="danger"
-              type="button"
-              onClick={() => localStorage.removeItem('token')}
-            >
+            <Button variant="danger" type="button" onClick={() => Logout()}>
               Logout
             </Button>
           )}
