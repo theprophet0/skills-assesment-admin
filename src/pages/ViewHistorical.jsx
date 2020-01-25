@@ -24,6 +24,12 @@ const ViewHistorical = () => {
       window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
     }
   }
+
+  const Logout = () => {
+    localStorage.removeItem('token')
+    setToken('')
+  }
+
   useEffect(() => {
     const successfulToken = localStorage.getItem('token')
     if (!successfulToken) {
@@ -34,23 +40,29 @@ const ViewHistorical = () => {
   useEffect(() => {
     if (token !== '') {
       getHistoricalRecords()
+    } else {
+      setLogoutRedirect(true)
     }
   }, [token])
   const [historicalRecords, setHistoricalRecords] = useState([])
   const [redirect, setRedirect] = useState(false)
-
+  const [logoutRedirect, setLogoutRedirect] = useState(false)
   return (
     <>
       {redirect && <Redirect to="/home" />}
       {isAuthenticated ? (
         <>
-          <Button
-            variant="danger"
-            type="button"
-            onClick={() => localStorage.removeItem('token')}
-          >
-            Logout
-          </Button>
+          {logoutRedirect ? (
+            <Redirect to="/" />
+          ) : (
+            <Button
+              variant="danger"
+              type="button"
+              onClick={() => localStorage.removeItem('token')}
+            >
+              Logout
+            </Button>
+          )}
           <div className="centerButton">
             <Button
               variant="primary"
