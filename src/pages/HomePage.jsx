@@ -12,7 +12,7 @@ const HomePage = () => {
       setIsAuthenticated(false)
     }
     setToken(successfulToken)
-    console.log(jwtDecode('token'))
+    console.log(jwtDecode(successfulToken))
   }, [])
   const [newRecruiter, setNewRecruiter] = useState({
     recruiterName: '',
