@@ -84,9 +84,6 @@ const RegisterPage = () => {
         </>
       )}
     </>
-    // <div className="account">
-    //   Already have an account? <Link to="/Login">Login</Link>
-    // </div>
   )
 }
 

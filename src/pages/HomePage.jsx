@@ -130,11 +130,18 @@ const HomePage = () => {
               >
                 Delete
               </Button>
+              <Button
+                variant="danger"
+                type="button"
+                onClick={() => localStorage.removeItem('token')}
+              >
+                Logout
+              </Button>
             </Form>
           </div>
         </>
       ) : (
-        <Redirect to="/unauth" />
+        <Redirect to="/" />
       )}
     </>
   )

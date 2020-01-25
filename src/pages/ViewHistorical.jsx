@@ -44,6 +44,13 @@ const ViewHistorical = () => {
       {redirect && <Redirect to="/home" />}
       {isAuthenticated ? (
         <>
+          <Button
+            variant="danger"
+            type="button"
+            onClick={() => localStorage.removeItem('token')}
+          >
+            Logout
+          </Button>
           <div className="centerButton">
             <Button
               variant="primary"
