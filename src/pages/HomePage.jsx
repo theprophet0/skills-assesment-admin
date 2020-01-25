@@ -54,6 +54,11 @@ const HomePage = () => {
     window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
   }
 
+  const Logout = () => {
+    localStorage.removeItem('token')
+    setLogoutRedirect(true)
+  }
+
   const handleChange = e => {
     e.persist()
     setNewRecruiter(prev => {
@@ -130,13 +135,13 @@ const HomePage = () => {
               >
                 Delete
               </Button>
-              <Button
-                variant="danger"
-                type="button"
-                onClick={() => localStorage.removeItem('token')}
-              >
-                Logout
-              </Button>
+              {logoutRedirect ? (
+                <Redirect to="/" />
+              ) : (
+                <Button variant="danger" type="button" onClick={() => Logout()}>
+                  Logout
+                </Button>
+              )}
             </Form>
           </div>
         </>
