@@ -6,13 +6,16 @@ import { jwtDecode, jwtVerify, resignJwt } from 'jwt-js-decode'
 const HomePage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
+  const [email, setEmail] = useState()
   useEffect(() => {
     const successfulToken = localStorage.getItem('token')
     if (!successfulToken) {
       setIsAuthenticated(false)
     }
     setToken(successfulToken)
-    console.log(jwtDecode(successfulToken))
+    setEmail(jwtDecode(successfulToken).payload.email)
+    console.log(jwtDecode(successfulToken).payload)
+    console.log(email)
   }, [])
   const [newRecruiter, setNewRecruiter] = useState({
     recruiterName: '',
