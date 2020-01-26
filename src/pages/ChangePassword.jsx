@@ -31,7 +31,6 @@ const ChangePassword = () => {
       },
       { headers: { Authorization: 'Bearer ' + token } }
     )
-    alert(response.data)
     window.location.href = 'https://admin.nurse2nursestaffing.online/home'
   }
 
