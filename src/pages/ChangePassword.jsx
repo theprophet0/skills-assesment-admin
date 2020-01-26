@@ -19,7 +19,6 @@ const ChangePassword = () => {
   }, [])
   const [password, setPassword] = useState('')
   const [secretHash, setSecretHash] = useState('')
-  const [success, setSuccess] = useState(false)
   const updatePassword = async e => {
     e.preventDefault()
     const response = await axios.put(
@@ -36,7 +35,6 @@ const ChangePassword = () => {
 
   return (
     <>
-      {success && <Redirect to="/home" />}
       {isAuthenticated ? (
         <div className="flexThis">
           <h1>Update Password</h1>
