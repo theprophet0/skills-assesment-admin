@@ -42,7 +42,7 @@ const ChangePassword = () => {
           <h1>Update Password</h1>
           <Form onSubmit={updatePassword}>
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>New Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
