@@ -18,6 +18,12 @@ body {
   margin-top:10rem;
 }
 
+.flexText {
+  display:flex;
+  justify-content: center;
+  text-align: left;
+}
+
 .flex {
   height: 100%;
   margin: 0;

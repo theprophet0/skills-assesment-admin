@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Form, Button, Modal } from 'react-bootstrap'
-import { Redirect } from 'react-router-dom'
-import { jwtDecode, jwtVerify, resignJwt } from 'jwt-js-decode'
+import { Redirect, Link } from 'react-router-dom'
 const HomePage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
@@ -13,9 +12,6 @@ const HomePage = () => {
       setIsAuthenticated(false)
     }
     setToken(successfulToken)
-    setEmail(jwtDecode(successfulToken).payload.email)
-    console.log(jwtDecode(successfulToken).payload)
-    console.log(email)
   }, [])
   const [newRecruiter, setNewRecruiter] = useState({
     recruiterName: '',
@@ -23,10 +19,7 @@ const HomePage = () => {
   })
   const [success, setSuccess] = useState(false)
   const [recruiters, setRecruiters] = useState([])
-  const [updatedCredentials, setUpdatedCredentials] = useState({
-    email: '',
-    password: '',
-  })
+
   const viewRecruiters = async () => {
     const response = await axios.get(
       `https://new-nurse-2-nurse-api.herokuapp.com/AllRecruiters`,
@@ -61,14 +54,6 @@ const HomePage = () => {
     alert(response.data)
     window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
   }
-  const updatePassword = async () => {
-    const response = await axios.put(
-      `https://new-nurse-2-nurse-api.herokuapp.com/auth/update/password`,
-      { headers: { Authorization: 'Bearer ' + token } }
-    )
-    alert(response.data)
-    window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
-  }
 
   const Logout = () => {
     localStorage.removeItem('token')
@@ -92,6 +77,7 @@ const HomePage = () => {
   const handleShow = () => setShow(true)
   return (
     <>
+      {console.log(email)}
       {isAuthenticated ? (
         <>
           <div className="flex">
@@ -161,6 +147,11 @@ const HomePage = () => {
                 </Button>
               )}
             </Form>
+          </div>
+          <div className="flexText">
+            <Link to="/change/password">
+              Want to change your password? Click here.
+            </Link>
           </div>
         </>
       ) : (

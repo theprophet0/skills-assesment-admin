@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound'
 import ViewHistorical from './pages/ViewHistorical'
 import AdminPage from './pages/AdminPage'
 import RegisterPage from './pages/RegisterPage'
+import ChangePassword from './pages/ChangePassword'
 const App = () => {
   return (
     <Router>
@@ -13,6 +14,8 @@ const App = () => {
         <Route exact path="/register" component={RegisterPage}></Route>
         <Route exact path="/home" component={HomePage}></Route>
         <Route exact path="/historical" component={ViewHistorical}></Route>
+        <Route exact path="/change/password" component={ChangePassword}></Route>
+
         <Route path="*" component={NotFound}></Route>
       </Switch>
     </Router>

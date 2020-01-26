@@ -8,13 +8,10 @@ const AdminPage = () => {
   const [success, setSuccess] = useState(false)
   const loginUser = async e => {
     e.preventDefault()
-    const response = await axios.post(
-      'https://new-nurse-2-nurse-api.herokuapp.com/auth/login',
-      {
-        email: email,
-        password: password,
-      }
-    )
+    const response = await axios.post('https://new-nurse-2-nurse-api.herokuapp.com/auth/login', {
+      email: email,
+      password: password,
+    })
     if (response.status === 200) {
       localStorage.setItem('token', response.data.token)
       setSuccess(true)

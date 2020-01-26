@@ -21,7 +21,7 @@ const ViewHistorical = () => {
     )
     if (response.status === 200) {
       alert(`Success!`)
-      window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
+      window.location.href = 'https://admin.nurse2nursestaffing.online/home'
     }
   }
 
