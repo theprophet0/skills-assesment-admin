@@ -77,13 +77,6 @@ const ViewHistorical = () => {
       {redirect && <Redirect to="/home" />}
       {isAuthenticated ? (
         <>
-          {logoutRedirect ? (
-            <Redirect to="/" />
-          ) : (
-            <Button variant="danger" type="button" onClick={() => Logout()}>
-              Logout
-            </Button>
-          )}
           <div className="centerButton">
             <Button
               variant="primary"
@@ -92,6 +85,13 @@ const ViewHistorical = () => {
             >
               Add Recruiter
             </Button>
+            {logoutRedirect ? (
+              <Redirect to="/" />
+            ) : (
+              <Button variant="danger" type="button" onClick={() => Logout()}>
+                Logout
+              </Button>
+            )}
           </div>
 
           <div className="reFlex">
