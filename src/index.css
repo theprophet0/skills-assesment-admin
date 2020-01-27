@@ -57,6 +57,10 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 30%;
+    padding:2rem;
+  }
+
+  .innerFlex {
+    margin: 2rem;
   }
 }

@@ -106,7 +106,7 @@ const ViewHistorical = () => {
                 )
                 .map(record => {
                   return (
-                    <div>
+                    <div className="innerFlex">
                       <ViewHistoricalComponent
                         record={record}
                         loaded={loaded}
