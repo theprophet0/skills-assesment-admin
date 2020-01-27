@@ -37,6 +37,7 @@ const ViewHistorical = () => {
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
+      window.open(response.data[0], 'pdf')
     }
   }
   const DeleteNurseRecord = async id => {
@@ -88,7 +89,12 @@ const ViewHistorical = () => {
             {logoutRedirect ? (
               <Redirect to="/" />
             ) : (
-              <Button variant="danger" type="button" onClick={() => Logout()}>
+              <Button
+                variant="danger"
+                size="lg"
+                type="button"
+                onClick={() => Logout()}
+              >
                 Logout
               </Button>
             )}
