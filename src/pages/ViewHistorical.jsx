@@ -3,16 +3,20 @@ import axios from 'axios'
 import { Button } from 'react-bootstrap'
 import ViewHistoricalComponent from '../components/ViewHistoricalComponent'
 import { Redirect } from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 const ViewHistorical = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
+  const [loaded, setLoaded] = useState(false)
   const getHistoricalRecordsWithoutPdf = async () => {
     const response = await axios.get(
       `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/All`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
-    console.log(response)
-    setHistoricalRecords(response.data)
+    if (response.status === 200) {
+      setHistoricalRecords(response.data)
+      setLoaded(true)
+    }
   }
   const getHistoricalRecordsWithPdf = async id => {
     const response = await axios.get(
@@ -75,27 +79,34 @@ const ViewHistorical = () => {
               Add Recruiter
             </Button>
           </div>
+
           <div className="reFlex">
-            {historicalRecords
-              .sort((a, b) =>
-                b.timeSubmitted < a.timeSubmitted
-                  ? -1
-                  : b.timeSubmitted > a.timeSubmitted
-                  ? 1
-                  : 0
-              )
-              .map(record => {
-                return (
-                  <div>
-                    <ViewHistoricalComponent
-                      record={record}
-                      // testDataPdf={testDataPdf}
-                      getHistoricalRecordsWithPdf={getHistoricalRecordsWithPdf}
-                      DeleteNurseRecord={DeleteNurseRecord}
-                    />
-                  </div>
+            {loaded ? (
+              historicalRecords
+                .sort((a, b) =>
+                  b.timeSubmitted < a.timeSubmitted
+                    ? -1
+                    : b.timeSubmitted > a.timeSubmitted
+                    ? 1
+                    : 0
                 )
-              })}
+                .map(record => {
+                  return (
+                    <div>
+                      <ViewHistoricalComponent
+                        record={record}
+                        loaded={loaded}
+                        getHistoricalRecordsWithPdf={
+                          getHistoricalRecordsWithPdf
+                        }
+                        DeleteNurseRecord={DeleteNurseRecord}
+                      />
+                    </div>
+                  )
+                })
+            ) : (
+              <Loader type="ThreeDots" color="#00BFFF" height={100} width={100} />
+            )}
           </div>
         </>
       ) : (

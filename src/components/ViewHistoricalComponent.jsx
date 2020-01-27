@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import Moment from 'moment'
+import Loader from 'react-loader-spinner'
 const ViewHistoricalComponent = props => {
   const [deleteVal, setDeleteVal] = useState(false)
   const [downloadPdfVal, setDownloadPdfVal] = useState(false)
@@ -40,11 +41,7 @@ const ViewHistoricalComponent = props => {
       <p>{props.record.nurseEmail}</p>
       <p>{props.record.recruiterEmail}</p>
       <p>{Moment(props.record.timeSubmitted).format('MMMM Do, YYYY')}</p>
-      <Button
-        download="test"
-        variant="primary"
-        onClick={downloadPdfFunc}
-      >
+      <Button download="test" variant="primary" onClick={downloadPdfFunc}>
         Get PDF
       </Button>
       <Button onClick={setDeleteFunc} variant="danger">
