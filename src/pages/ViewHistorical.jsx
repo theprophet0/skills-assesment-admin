@@ -26,8 +26,17 @@ const ViewHistorical = () => {
     )
 
     if (response.status === 200) {
-      let newTab = window.open()
-      newTab.location.href = response.data[0]
+      var link = document.createElement('a')
+      link.href = response.data[0]
+
+      //Set properties as you wise
+      link.download = 'PDFData'
+      link.target = 'blank'
+
+      //this part will append the anchor tag and remove it after automatic click
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
     }
   }
   const DeleteNurseRecord = async id => {
