@@ -26,15 +26,7 @@ const ViewHistorical = () => {
     )
 
     if (response.status === 200) {
-      const linkSource = `data:application/pdf;base64,${response.data[0].substring(
-        51
-      )}`
-      const downloadLink = document.createElement('a')
-      const fileName = 'vct_illustration.pdf'
-
-      downloadLink.href = linkSource
-      downloadLink.download = fileName
-      downloadLink.click()
+      window.open(response.data[0], 'data.pdf')
     }
   }
   const DeleteNurseRecord = async id => {
