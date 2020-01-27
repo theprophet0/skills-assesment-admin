@@ -20,6 +20,9 @@ const ViewHistorical = () => {
       { headers: { Authorization: 'Bearer ' + token } }
     )
     setTestDataPdf(response.data)
+    window.open(response.data[0])
+    window.open(response.data)
+    console.log(response.data)
   }
   const DeleteNurseRecord = async id => {
     const response = await axios.delete(
@@ -90,7 +93,7 @@ const ViewHistorical = () => {
                     <ViewHistoricalComponent
                       record={record}
                       // testDataPdf={testDataPdf}
-                      // getHistoricalRecordsWithPdf={getHistoricalRecordsWithPdf}
+                      getHistoricalRecordsWithPdf={getHistoricalRecordsWithPdf}
                       DeleteNurseRecord={DeleteNurseRecord}
                     />
                   </div>
