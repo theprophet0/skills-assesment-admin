@@ -26,7 +26,8 @@ const ViewHistorical = () => {
     )
 
     if (response.status === 200) {
-      window.open(response.data[0], 'data.pdf')
+      let newTab = window.open()
+      newTab.location.href = response.data[0]
     }
   }
   const DeleteNurseRecord = async id => {
