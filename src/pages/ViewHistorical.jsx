@@ -15,7 +15,7 @@ const ViewHistorical = () => {
     setHistoricalRecords(response.data)
   }
   const getHistoricalRecordsWithPdf = async id => {
-    const response = await axios.post(
+    const response = await axios.get(
       `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
