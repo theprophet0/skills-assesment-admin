@@ -23,7 +23,7 @@ const ViewHistorical = () => {
       `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
-    window.open(response.data[0])
+    window.open(response.data[0], '_blank')
   }
   const DeleteNurseRecord = async id => {
     const response = await axios.delete(
@@ -105,7 +105,12 @@ const ViewHistorical = () => {
                   )
                 })
             ) : (
-              <Loader type="ThreeDots" color="#00BFFF" height={100} width={100} />
+              <Loader
+                type="ThreeDots"
+                color="#00BFFF"
+                height={100}
+                width={100}
+              />
             )}
           </div>
         </>
