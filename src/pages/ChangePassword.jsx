@@ -12,10 +12,10 @@ const ChangePassword = () => {
     const successfulToken = localStorage.getItem('token')
     if (!successfulToken) {
       setIsAuthenticated(false)
+    } else {
+      setToken(successfulToken)
+      setEmail(jwtDecode(successfulToken).payload.email)
     }
-    setToken(successfulToken)
-    setEmail(jwtDecode(successfulToken).payload.email)
-    console.log(jwtDecode(successfulToken).payload.email)
   }, [])
   const [password, setPassword] = useState('')
   const [secretHash, setSecretHash] = useState('')

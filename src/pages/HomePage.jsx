@@ -77,7 +77,6 @@ const HomePage = () => {
   const handleShow = () => setShow(true)
   return (
     <>
-      {console.log(email)}
       {isAuthenticated ? (
         <>
           <div className="flex">
