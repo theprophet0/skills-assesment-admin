@@ -89,8 +89,8 @@ const ViewHistorical = () => {
                   <div>
                     <ViewHistoricalComponent
                       record={record}
-                      testDataPdf={testDataPdf}
-                      getHistoricalRecordsWithPdf={getHistoricalRecordsWithPdf}
+                      // testDataPdf={testDataPdf}
+                      // getHistoricalRecordsWithPdf={getHistoricalRecordsWithPdf}
                       DeleteNurseRecord={DeleteNurseRecord}
                     />
                   </div>

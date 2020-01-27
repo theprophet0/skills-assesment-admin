@@ -40,14 +40,14 @@ const ViewHistoricalComponent = props => {
       <p>{props.record.nurseEmail}</p>
       <p>{props.record.recruiterEmail}</p>
       <p>{Moment(props.record.timeSubmitted).format('MMMM Do, YYYY')}</p>
-      <Button
+      {/* <Button
         download="test"
         href={props.testDataPdf}
         variant="primary"
         onClick={downloadPdfFunc}
       >
         Get PDF
-      </Button>
+      </Button> */}
       <Button onClick={setDeleteFunc} variant="danger">
         Delete
       </Button>
