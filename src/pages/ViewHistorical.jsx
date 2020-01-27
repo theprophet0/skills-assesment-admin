@@ -6,13 +6,20 @@ import { Redirect } from 'react-router-dom'
 const ViewHistorical = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
-  const getHistoricalRecords = async () => {
+  const getHistoricalRecordsWithoutPdf = async () => {
     const response = await axios.get(
       `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/All`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
     console.log(response)
     setHistoricalRecords(response.data)
+  }
+  const getHistoricalRecordsWithPdf = async id => {
+    const response = await axios.post(
+      `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`,
+      { headers: { Authorization: 'Bearer ' + token } }
+    )
+    setTestDataPdf(response.data)
   }
   const DeleteNurseRecord = async id => {
     const response = await axios.delete(
@@ -39,9 +46,11 @@ const ViewHistorical = () => {
   }, [])
   useEffect(() => {
     if (token !== '') {
-      getHistoricalRecords()
+      getHistoricalRecordsWithoutPdf()
     }
   }, [token])
+  const [testDataPdf, setTestDataPdf] = useState([])
+
   const [historicalRecords, setHistoricalRecords] = useState([])
   const [redirect, setRedirect] = useState(false)
   const [logoutRedirect, setLogoutRedirect] = useState(false)
@@ -80,6 +89,8 @@ const ViewHistorical = () => {
                   <div>
                     <ViewHistoricalComponent
                       record={record}
+                      testDataPdf={testDataPdf}
+                      getHistoricalRecordsWithPdf={getHistoricalRecordsWithPdf}
                       DeleteNurseRecord={DeleteNurseRecord}
                     />
                   </div>
