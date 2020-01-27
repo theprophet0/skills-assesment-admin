@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap'
 import ViewHistoricalComponent from '../components/ViewHistoricalComponent'
 import { Redirect } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import JsPDF from 'jspdf'
 const ViewHistorical = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
@@ -27,9 +26,17 @@ const ViewHistorical = () => {
     )
 
     if (response.status === 200) {
-      var p = new JsPDF()
-      p.addImage(response.data[0], 'JPEG', 0, 0) // where imageDate contains base64 string
-      p.save('pdf')
+      var link = document.createElement('a')
+      link.href = response.data[0]
+
+      //Set properties as you wise
+      link.download = 'PDFData'
+      link.target = '_blank'
+
+      //this part will append the anchor tag and remove it after automatic click
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
     }
   }
   const DeleteNurseRecord = async id => {
