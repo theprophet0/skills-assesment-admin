@@ -19,10 +19,7 @@ const ViewHistorical = () => {
       `https://new-nurse-2-nurse-api.herokuapp.com/api/NurseInformation/${id}`,
       { headers: { Authorization: 'Bearer ' + token } }
     )
-    setTestDataPdf(response.data)
     window.open(response.data[0])
-    window.open(response.data)
-    console.log(response.data)
   }
   const DeleteNurseRecord = async id => {
     const response = await axios.delete(
