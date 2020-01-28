@@ -27,8 +27,9 @@ const ViewHistorical = () => {
     )
 
     if (response.status === 200) {
-      download(response.data[0], 'pdftest', 'application/pdf')
-      window.open(response.data[0], 'pdf')
+      download(`data:application/pdf;base64,${response.data[0].substring(51)}`, 'pdftest', 'application/pdf')
+      // window.open(response.data[0], 'pdf')
+      console.log(response.data[0].substring(51))
     }
   }
   const DeleteNurseRecord = async id => {

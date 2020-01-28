@@ -19,6 +19,7 @@ const AdminPage = () => {
       localStorage.setItem('token', response.data.token)
       setSuccess(true)
     } else if (response.status === 400) {
+      console.log(response.data)
       alert(response.data)
       window.location.href = 'https://admin.nurse2nursestaffing.online/'
     }
