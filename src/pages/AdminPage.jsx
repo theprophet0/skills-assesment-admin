@@ -20,6 +20,7 @@ const AdminPage = () => {
       setSuccess(true)
     } else {
       alert(response.data)
+      window.location.href = 'https://admin.nurse2nursestaffing.online/'
     }
   }
   return (
