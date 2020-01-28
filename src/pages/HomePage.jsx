@@ -84,7 +84,7 @@ const HomePage = () => {
             <Button onClick={() => setViewHistorical(true)}>
               View Historical Records
             </Button>
-            <Button onClick={handleShow}>View Recruiters</Button>
+
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Current Recruiters</Modal.Title>
@@ -126,6 +126,7 @@ const HomePage = () => {
                   placeholder="Enter Recruiter Email"
                   onChange={handleChange}
                 />
+                <Button onClick={handleShow}>View Recruiters</Button>
               </Form.Group>
               <Button variant="primary" type="submit">
                 Submit
