@@ -16,7 +16,9 @@ const AdminPage = () => {
       localStorage.setItem('token', response.data.token)
       setSuccess(true)
     }
-    console.log(response)
+    else {
+      alert('Wrong credentials, try again.')
+    }
   }
   return (
     <>
