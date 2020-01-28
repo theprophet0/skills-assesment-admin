@@ -53,7 +53,7 @@ body {
 }
 
 .innerFlex {
-  width: 100%;
+  /* width: 100%; */
 }
 
 @media (min-width: 768px) {
@@ -65,7 +65,6 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
     padding: 2rem;
   }
 
