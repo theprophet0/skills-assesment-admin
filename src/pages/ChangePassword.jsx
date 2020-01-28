@@ -8,6 +8,8 @@ const ChangePassword = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [token, setToken] = useState('')
   const [email, setEmail] = useState()
+  const [password, setPassword] = useState('')
+  const [secretHash, setSecretHash] = useState('')
   useEffect(() => {
     const successfulToken = localStorage.getItem('token')
     if (!successfulToken) {
@@ -17,8 +19,7 @@ const ChangePassword = () => {
       setEmail(jwtDecode(successfulToken).payload.email)
     }
   }, [])
-  const [password, setPassword] = useState('')
-  const [secretHash, setSecretHash] = useState('')
+
   const updatePassword = async e => {
     e.preventDefault()
     const response = await axios.put(
