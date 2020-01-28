@@ -52,10 +52,6 @@ body {
   margin: 2rem;
 }
 
-.innerFlex {
-  /* width: 100%; */
-}
-
 @media (min-width: 768px) {
   .flex {
     margin-top: 10rem;

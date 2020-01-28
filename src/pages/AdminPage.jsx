@@ -6,22 +6,23 @@ const AdminPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [success, setSuccess] = useState(false)
+  const [errorVar, setErrorVar] = useState(false)
   const loginUser = async e => {
     e.preventDefault()
-    const response = await axios.post(
-      'https://new-nurse-2-nurse-api.herokuapp.com/auth/login',
-      {
-        email: email,
-        password: password,
+    try {
+      const response = await axios.post(
+        'https://new-nurse-2-nurse-api.herokuapp.com/auth/login',
+        {
+          email: email,
+          password: password,
+        }
+      )
+      if (response.status === 200) {
+        localStorage.setItem('token', response.data.token)
+        setSuccess(true)
       }
-    )
-    if (response.status === 200) {
-      localStorage.setItem('token', response.data.token)
-      setSuccess(true)
-    } else if (!success) {
-      console.log(response.data.message)
-      alert(response.data.message)
-      window.location.href = 'https://admin.nurse2nursestaffing.online/'
+    } catch (error) {
+      alert('Invalid credentials, try again.')
     }
   }
   return (
