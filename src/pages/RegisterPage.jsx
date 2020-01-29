@@ -7,18 +7,22 @@ const RegisterPage = () => {
   const [newUserCredentials, setNewUserCredentials] = useState({
     email: '',
     password: '',
-    secretHashed: '',
+    secretHash: '',
   })
   const [success, setSuccess] = useState(false)
   const registerUser = async e => {
     e.preventDefault()
-    const resp = await axios.post(
-      'https://new-nurse-2-nurse-api.herokuapp.com/auth/signup',
-      newUserCredentials
-    )
-    console.log(resp.data)
-    if (resp.status === 200) {
-      setSuccess(true)
+    try {
+      const resp = await axios.post(
+        'https://new-nurse-2-nurse-api.herokuapp.com/auth/signup',
+        newUserCredentials
+      )
+      console.log(resp.data)
+      if (resp.status === 200) {
+        setSuccess(true)
+      }
+    } catch (error) {
+      alert('Invalid credentials, try again.')
     }
   }
   const onChange = e => {
@@ -66,7 +70,7 @@ const RegisterPage = () => {
               <Form.Group controlId="formBasicName">
                 <Form.Label>Secret Hash</Form.Label>
                 <Form.Control
-                  name="secretHashed"
+                  name="secretHash"
                   onChange={onChange}
                   type="password"
                   placeholder="Enter Secret Hash"
