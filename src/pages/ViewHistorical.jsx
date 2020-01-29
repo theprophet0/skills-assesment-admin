@@ -39,7 +39,7 @@ const ViewHistorical = () => {
     )
     if (response.status === 200) {
       alert(`Success!`)
-      window.location.href = 'https://admin.nurse2nursestaffing.online/home'
+      window.location.href = 'https://admin.nurse2nursestaffing.online/historical'
     }
   }
 
