@@ -19,7 +19,7 @@ const RegisterPage = () => {
       )
       console.log(resp.data)
       if (resp.status === 200) {
-        localStorage.setItem('token', response.data.token)
+        localStorage.setItem('token', resp.data.token)
         setSuccess(true)
       }
     } catch (error) {
