@@ -42,7 +42,7 @@ const HomePage = () => {
       alert(
         `Success: ${newRecruiter.recruiterEmail} has been added to the options.`
       )
-      window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
+      window.location.href = 'https://admin.nurse2nursestaffing.online/home'
     }
   }
   const deleteRecruiter = async () => {
@@ -51,7 +51,7 @@ const HomePage = () => {
       { headers: { Authorization: 'Bearer ' + token } }
     )
     alert(response.data)
-    window.location.href = 'https://admin-page-nurse-2-nurse.netlify.com/home'
+    window.location.href = 'https://admin.nurse2nursestaffing.online/home'
   }
 
   const Logout = () => {
